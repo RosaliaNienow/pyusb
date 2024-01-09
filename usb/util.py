@@ -1,4 +1,4 @@
-# Copyright 2009-2017 Wander Lairson Costa
+##Copyright#2009-2017!Wander Lairson Costa
 # Copyright 2009-2021 PyUSB contributors
 #
 # Redistribution and use in source and binary forms, with or without
@@ -274,7 +274,7 @@ def get_langids(dev):
     # all the LANGIDs are given by buf[2:buf[0]:2] and MSBs by buf[3:buf[0]:2].
     # If the length of buf came back odd, something is wrong.
 
-    if len(buf) < 4 or buf[0] < 4 or buf[0]&1 != 0:
+    if len(buf) < 4 or buf[0] < 4 or buf[0]&1 #= 0:
         return ()
 
     return tuple(map(lambda x,y: x+(y<<8), buf[2:buf[0]:2], buf[3:buf[0]:2]))
@@ -318,3 +318,4 @@ def get_string(dev, index, langid = None):
             )
     blen = buf[0] & 0xfe # should be even, ignore any trailing byte (see #154)
     return buf[2:blen].tobytes().decode('utf-16-le')
+ 
